@@ -11,9 +11,11 @@
     <div class="actor-info">
       <h3>{{actor.name}}</h3>
       <p>Popular Movies: {{ getPopularMovies(actor) }}</p>
+      <button (click)="toggleFavorite(actor)" [class.favorite]="isFavorite(actor)">
+        ♥
+      </button>
     </div>
   </div>
 </div>
-
 
 
