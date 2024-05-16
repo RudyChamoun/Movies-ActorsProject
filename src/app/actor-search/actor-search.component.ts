@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TmdbService } from '../tmdb.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class ActorSearchComponent implements OnInit {
   query: string = '';
   actors: any[] = [];
 
-  constructor(private tmdbService: TmdbService) { }
+  constructor(private tmdbService: TmdbService, private router: Router) { }
 
   ngOnInit(): void { }
 
@@ -24,5 +25,9 @@ export class ActorSearchComponent implements OnInit {
 
   getPopularMovies(actor: any): string {
     return actor.known_for.map((movie: any) => movie.title).join(', ');
+  }
+
+  viewMovies(actorId: number): void {
+    this.router.navigate(['/movies', actorId]);
   }
 }
