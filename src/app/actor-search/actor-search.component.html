@@ -1,21 +1,29 @@
 <div class="welcome-container">
+  <!-- Display a welcome message -->
   <h1>Welcome Feel free to use our search bar</h1>
 </div>
+
 <div class="search-container">
+  <!-- Input field bound to the 'query' variable for searching actors -->
   <input [(ngModel)]="query" placeholder="Search for actors..." />
+  <!-- Button to trigger the searchActors method when clicked -->
   <button (click)="searchActors()">Search</button>
 </div>
+
 <div class="actor-gallery">
+  <!-- Loop through the list of actors and display each actor's information -->
   <div *ngFor="let actor of actors" class="actor-item" (click)="viewMovies(actor.id)">
+    <!-- Display the actor's profile picture -->
     <img [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path" alt="{{actor.name}}">
     <div class="actor-info">
+      <!-- Display the actor's name -->
       <h3>{{actor.name}}</h3>
+      <!-- Display a list of popular movies the actor has appeared in -->
       <p>Popular Movies: {{ getPopularMovies(actor) }}</p>
+      <!-- Button to mark or unmark the actor as a favorite -->
       <button (click)="toggleFavorite(actor)" [class.favorite]="isFavorite(actor)">
         ♥
       </button>
     </div>
   </div>
 </div>
-
-

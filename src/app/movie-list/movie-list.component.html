@@ -1,16 +1,26 @@
 <div class="movie-gallery">
+    <!-- Loop through the list of paginated movies and display each movie's information -->
     <div *ngFor="let movie of paginatedMovies" class="movie-item">
+      <!-- Display the movie's poster -->
       <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{movie.title}}">
+      
       <div class="movie-info">
+        <!-- Display the movie's title -->
         <h3>{{movie.title}}</h3>
+        <!-- Display the movie's overview (description) -->
         <p>{{movie.overview}}</p>
+        <!-- Display the movie's release date -->
         <p>Release Date: {{movie.release_date}}</p>
+        <!-- Display the movie's popularity rating -->
         <p>Popularity: {{movie.popularity | number: '1.0-1'}} / 5</p>
       </div>
     </div>
   </div>
+  
   <div class="pagination-controls">
+    <!-- Button to go to the previous page of movies -->
     <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <!-- Button to go to the next page of movies -->
     <button (click)="nextPage()" [disabled]="(currentPage * moviesPerPage) >= movies.length">Next</button>
   </div>
   
